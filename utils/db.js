@@ -1,6 +1,6 @@
-import mongodb from 'mongodb'
-import envLoader from './env'
-import collection from 'mongodb/lib/collection'
+import mongodb from 'mongodb';
+import envLoader from './env';
+import collection from 'mongodb/lib/collection';
 
 /*
  * creates a client to mongodb
@@ -14,9 +14,9 @@ class DBClient {
 	constructor() {
 		envLoader();
 		const host = process.env.DB_HOST || 'localhost';
-		const port = process.env.DB_PORT || '27017';
+		const port = process.env.DB_PORT || 27017;
 		const database = process.env.DB_DATABASE || 'files_manager';
-		const dburl = `mongodb://$(host):$(port)/$(database)`;
+		const dburl = `mongodb://${host}:${port}/${database}`;
 
 		this.client = new mongodb.MongoClient(dburl, { useUnifiedTopology: true });
 		this.client.connect();
@@ -28,7 +28,7 @@ class DBClient {
 		 * returns true when connection is successful
 		 */
 
-		return this.client.isconnected();
+		return this.client.isConnected();
 	}
 
 	/*
