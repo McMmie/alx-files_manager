@@ -20,7 +20,6 @@ class RedisClient {
     });
   }
 
-
   isAlive() {
     return this.isClientConnected;
   }
